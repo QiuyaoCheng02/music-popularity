@@ -1,70 +1,73 @@
-# Getting Started with Create React App
+# Music Popularity Prediction & Recommendation System
+A full-stack application that predicts the popularity tier of a song based on its audio features and recommends similar songs using a hybrid filtering approach.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Tech Stack
+- **Backend**: FastAPI (Python)
+- **Frontend**: React.js
+- **Database**: PostgreSQL
+- **ML Models**: Scikit-learn (RandomForest, KNN), XGBoost
+- **Data Processing**: Pandas, NumPy
 
-## Available Scripts
+## Prerequisites
+- Python 3.8+
+- Node.js & npm
+- PostgreSQL installed and running
 
-In the project directory, you can run:
+##  Installation & Setup
 
-### `npm start`
+### 1. Database Setup
+Ensure PostgreSQL is running and create a database named `music_db`.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```bash
+createdb music_db
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+*Note: If your database credentials differ from `postgres:postgres@localhost:5432`, update `app/database.py`.*
 
-### `npm test`
+### 2. Backend Setup
+Navigate to the project root directory:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+# Create virtual environment
+python3 -m venv venv
 
-### `npm run build`
+# Activate virtual environment
+source venv/bin/activate  # macOS/Linux
+# venv\Scripts\activate   # Windows
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Install dependencies
+pip install -r requirements.txt
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# Start the API server
+uvicorn app.main:app --reload
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The backend will start at `http://127.0.0.1:8000`. API docs are available at `http://127.0.0.1:8000/docs`.
 
-### `npm run eject`
+### 3. Frontend Setup
+Open a new terminal and navigate to the frontend directory:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+cd music-popularity
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Install dependencies
+npm install
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+# Start the React app
+npm start
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+The application will open at `http://localhost:3000`.
 
-## Learn More
+## Usage
+**Song Recommendation**: Enter a song name (e.g., "Dance Monkey") in the right panel.
+    *   The system will display the **matched input song** with a Spotify player.
+    *   It will list **5 similar songs** with their similarity scores and preview players.
+    *   If multiple songs match the name, the system automatically selects the most popular version.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Project Structure
+- `app/`: FastAPI application code (API, Database, Schemas, Recommender Core).
+- `models/`: Trained ML models (`.pkl` files).
+- `notebooks/`: Jupyter notebooks and training scripts (`train.py`).
+- `music-popularity/`: React frontend source code.
+- `data/`: Dataset files.
