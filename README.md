@@ -1,4 +1,4 @@
-# Music Popularity Prediction & Recommendation System
+# Music Recommendation System
 A full-stack application that predicts the popularity tier of a song based on its audio features and recommends similar songs using a hybrid filtering approach.
 
 ## Tech Stack
@@ -60,10 +60,11 @@ npm start
 The application will open at `http://localhost:3000`.
 
 ## Usage
-**Song Recommendation**: Enter a song name (e.g., "Dance Monkey") in the right panel.
-    *   The system will display the **matched input song** with a Spotify player.
-    *   It will list **5 similar songs** with their similarity scores and preview players.
-    *   If multiple songs match the name, the system automatically selects the most popular version.
+**Song Recommendation**: 
+- Enter a song name (e.g., "Dance Monkey") in the right panel.
+- The system will display the **matched input song** with a Spotify player.
+- It will list **5 similar songs** with their similarity scores and preview players.
+- If multiple songs match the name, the system automatically selects the most popular version.
 
 ## Project Structure
 - `app/`: FastAPI application code (API, Database, Schemas, Recommender Core).
