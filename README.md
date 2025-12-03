@@ -48,7 +48,7 @@ The backend will start at `http://127.0.0.1:8000`. API docs are available at `ht
 Open a new terminal and navigate to the frontend directory:
 
 ```bash
-cd music-popularity
+cd music-recommend
 
 # Install dependencies
 npm install
@@ -70,5 +70,5 @@ The application will open at `http://localhost:3000`.
 - `app/`: FastAPI application code (API, Database, Schemas, Recommender Core).
 - `models/`: Trained ML models (`.pkl` files).
 - `notebooks/`: Jupyter notebooks and training scripts (`train.py`).
-- `music-popularity/`: React frontend source code.
+- `music-recommend/`: React frontend source code.
 - `data/`: Dataset files.
